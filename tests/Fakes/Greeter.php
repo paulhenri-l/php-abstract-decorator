@@ -4,7 +4,7 @@ namespace PaulhenriL\PhpAbstractDecorator\Tests\Fakes;
 
 class Greeter
 {
-    protected $greetee;
+    public $greetee;
 
     public function __construct(string $greetee)
     {
@@ -19,5 +19,10 @@ class Greeter
     public function getGreetee(): string
     {
         return $this->greetee;
+    }
+
+    public function myself(): self
+    {
+        return $this;
     }
 }

@@ -16,6 +16,14 @@ class AbstractDecoratorTest extends TestCase
         $this->assertEquals("HELLO WORLD", $greatGreater->greet());
     }
 
+    public function test_methods_can_be_chained()
+    {
+        $greater = new Greeter("world");
+        $greatGreater = new GreatGreeter($greater);
+
+        $this->assertInstanceOf(GreatGreeter::class, $greatGreater->myself());
+    }
+
     public function test_other_methods_can_still_be_called()
     {
         $greater = new Greeter("world");
@@ -30,5 +38,16 @@ class AbstractDecoratorTest extends TestCase
         $greatGreater = new GreatGreeter($greater);
 
         $this->assertEquals("world", $greatGreater->greetee);
+    }
+
+    public function test_properties_can_still_be_set()
+    {
+        $greater = new Greeter("world");
+        $greatGreater = new GreatGreeter($greater);
+
+        $greatGreater->greetee = "monde";
+
+        $this->assertEquals("monde", $greatGreater->greetee);
+        $this->assertEquals("monde", $greater->greetee);
     }
 }

@@ -14,4 +14,32 @@ composer require paulhenri-l/php-abstract-decorator
 
 ## Usage
 
-TODO
+```php
+<?php
+
+class Person {
+    public function talk()
+    {
+        return "hello";
+    }
+    
+    public function name()
+    {
+        return "none";
+    }
+}
+
+class LoudPerson extends \PaulhenriL\PhpAbstractDecorator\AbstractDecorator {
+    public function talk(){
+        return mb_strtoupper(
+            $this->decoratedInstance->talk()
+        );
+    }
+}
+
+$person = new Person;
+$loudPerson = new LoudPerson($person);
+
+$loudPerson->talk(); // HELLO
+$loudPerson->name(); // none
+```
