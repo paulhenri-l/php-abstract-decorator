@@ -2,7 +2,7 @@
 
 namespace PaulhenriL\PhpAbstractDecorator;
 
-class Hello
+abstract class AbstractDecorator
 {
     //
 }
