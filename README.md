@@ -22,7 +22,7 @@ class Person {
     {
         return "hello";
     }
-    
+
     public function name()
     {
         return "none";
